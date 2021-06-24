@@ -6,19 +6,31 @@ package com.example.android.miwok;
  */
 public class Word {
 
-    /** Default translation for the word */
+    /**
+     * Default translation for the word
+     */
     private String mDefaultTranslation;
 
-    /** Miwok translation for the word */
+    /**
+     * Miwok translation for the word
+     */
     private String mMiwokTranslation;
 
-    /** Drawable resource ID */
+    /**
+     * Audio resource ID for the word
+     */
+    private int mAudioResourceId;
+
+    /**
+     * Drawable resource ID
+     */
 
     private int mImageResourceId = NO_IMAGE_PROVIDED;
 
-    /** Constant value that represents no image was provided for this word */
+    /**
+     * Constant value that represents no image was provided for this word
+     */
     private static final int NO_IMAGE_PROVIDED = -1;
-
 
 
     /**
@@ -26,13 +38,14 @@ public class Word {
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
      *                           (such as English)
-     * @param miwokTranslation is the word in the Miwok language
-     *
+     * @param miwokTranslation   is the word in the Miwok language
+     * @param audioResourceId    is the resource ID for the audio file associated with this word
      */
 
-    public Word(String defaultTranslation, String miwokTranslation) {
+    public Word(String defaultTranslation, String miwokTranslation, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+        mAudioResourceId = audioResourceId;
     }
 
     /**
@@ -40,14 +53,15 @@ public class Word {
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
      *                           (such as English)
-     * @param miwokTranslation is the word in the Miwok language
-     *
-     * @param imageResourceId is drawable reference ID that corresponds to the Android version
+     * @param miwokTranslation   is the word in the Miwok language
+     * @param imageResourceId    is drawable reference ID that corresponds to the Android version
+     * @param audioResourceId    is the resource ID for the audio file associated with this word
      */
-    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
         mImageResourceId = imageResourceId;
+        mAudioResourceId = audioResourceId;
     }
 
     /**
@@ -67,13 +81,22 @@ public class Word {
     /**
      * Get the image resource ID
      */
-    public  int getImageResourceId() { return  mImageResourceId; }
+    public int getImageResourceId() {
+        return mImageResourceId;
+    }
 
     /**
      * Returns whether or not there is an image for this word.
      */
-    public  boolean hasImage() {
+    public boolean hasImage() {
         return mImageResourceId != NO_IMAGE_PROVIDED;
+    }
+
+    /**
+     * Return the audio resource ID of the word.
+     */
+    public int getAudioResourceId() {
+        return mAudioResourceId;
     }
 
 }
